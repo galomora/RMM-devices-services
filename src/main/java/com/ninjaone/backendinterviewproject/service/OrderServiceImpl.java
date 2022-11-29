@@ -2,7 +2,7 @@ package com.ninjaone.backendinterviewproject.service;
 
 import com.ninjaone.backendinterviewproject.database.DeviceRepository;
 import com.ninjaone.backendinterviewproject.database.OrderRepository;
-import com.ninjaone.backendinterviewproject.database.ServiceOnDeviceRepository;
+import com.ninjaone.backendinterviewproject.database.ServiceForDeviceRepository;
 import com.ninjaone.backendinterviewproject.model.*;
 import com.ninjaone.backendinterviewproject.service.cache.ServiceCache;
 import com.ninjaone.backendinterviewproject.service.exception.OrderNotFoundException;
@@ -19,7 +19,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private DeviceRepository deviceRepository;
     @Autowired
-    private ServiceOnDeviceRepository serviceOnDeviceRepository;
+    private ServiceForDeviceRepository serviceForDeviceRepository;
     @Autowired
     private ServiceCache serviceCache;
 
@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
         TechService service = this.serviceCache.getService(serviceName).orElseThrow();
         Device device = this.deviceRepository.findById(deviceId).orElseThrow();
         ServiceForDevice serviceOnDeviceToSave = new ServiceForDevice(service, device, order );
-        return serviceOnDeviceRepository.save(serviceOnDeviceToSave);
+        return serviceForDeviceRepository.save(serviceOnDeviceToSave);
     }
 
     @Override

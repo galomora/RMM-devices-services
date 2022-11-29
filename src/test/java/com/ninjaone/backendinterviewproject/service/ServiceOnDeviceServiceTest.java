@@ -1,6 +1,6 @@
 package com.ninjaone.backendinterviewproject.service;
 
-import com.ninjaone.backendinterviewproject.database.ServiceOnDeviceRepository;
+import com.ninjaone.backendinterviewproject.database.ServiceForDeviceRepository;
 import com.ninjaone.backendinterviewproject.model.OrderTestFactory;
 import com.ninjaone.backendinterviewproject.model.ServiceForDevice;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class ServiceOnDeviceServiceTest {
     @Mock
-    private ServiceOnDeviceRepository serviceOnDeviceRepository;
+    private ServiceForDeviceRepository serviceForDeviceRepository;
 
     @InjectMocks
     ServiceForDeviceServiceImpl serviceOnDeviceService;
@@ -27,29 +27,29 @@ public class ServiceOnDeviceServiceTest {
 
     @Test
     public void getServiceOnDeviceTest () {
-        when (serviceOnDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
+        when (serviceForDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
                 Optional.of(OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService()));
         Optional<ServiceForDevice> optionalServiceOnDevice =
                 serviceOnDeviceService.getServiceOnDevice(SERVICE_ON_DEVICE_ID);
         Assertions.assertFalse(optionalServiceOnDevice.isEmpty());
-        verify(serviceOnDeviceRepository, times(1)).findById(any());
+        verify(serviceForDeviceRepository, times(1)).findById(any());
     }
 
     @Test
     public void getServiceOnDeviceNoResultTest () {
-        when (serviceOnDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
+        when (serviceForDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
                 Optional.empty());
         Optional<ServiceForDevice> optionalServiceOnDevice =
                 serviceOnDeviceService.getServiceOnDevice(SERVICE_ON_DEVICE_ID);
         Assertions.assertTrue(optionalServiceOnDevice.isEmpty());
-        verify(serviceOnDeviceRepository, times(1)).findById(any());
+        verify(serviceForDeviceRepository, times(1)).findById(any());
     }
 
     @Test
     public void deleteServiceOnDeviceTest () {
-        doNothing().when(serviceOnDeviceRepository).deleteById(SERVICE_ON_DEVICE_ID);
+        doNothing().when(serviceForDeviceRepository).deleteById(SERVICE_ON_DEVICE_ID);
         serviceOnDeviceService.deleteServiceOnDevice(SERVICE_ON_DEVICE_ID);
-        verify(serviceOnDeviceRepository, times(1)).deleteById(any());
+        verify(serviceForDeviceRepository, times(1)).deleteById(any());
     }
 
 }

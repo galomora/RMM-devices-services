@@ -1,6 +1,6 @@
 package com.ninjaone.backendinterviewproject.service;
 
-import com.ninjaone.backendinterviewproject.database.ServiceOnDeviceRepository;
+import com.ninjaone.backendinterviewproject.database.ServiceForDeviceRepository;
 import com.ninjaone.backendinterviewproject.model.ServiceForDevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,15 +11,15 @@ import java.util.Optional;
 public class ServiceForDeviceServiceImpl implements ServiceForDeviceService {
 
     @Autowired
-    private ServiceOnDeviceRepository serviceOnDeviceRepository;
+    private ServiceForDeviceRepository serviceForDeviceRepository;
 
     @Override
     public Optional<ServiceForDevice> getServiceOnDevice(Long id) {
-        return serviceOnDeviceRepository.findById(id);
+        return serviceForDeviceRepository.findById(id);
     }
 
     @Override
     public void deleteServiceOnDevice(Long id) {
-        this.serviceOnDeviceRepository.deleteById(id);
+        this.serviceForDeviceRepository.deleteById(id);
     }
 }

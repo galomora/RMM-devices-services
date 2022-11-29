@@ -2,7 +2,7 @@ package com.ninjaone.backendinterviewproject.service;
 
 import com.ninjaone.backendinterviewproject.database.DeviceRepository;
 import com.ninjaone.backendinterviewproject.database.OrderRepository;
-import com.ninjaone.backendinterviewproject.database.ServiceOnDeviceRepository;
+import com.ninjaone.backendinterviewproject.database.ServiceForDeviceRepository;
 import com.ninjaone.backendinterviewproject.model.Order;
 import com.ninjaone.backendinterviewproject.model.OrderTestFactory;
 import com.ninjaone.backendinterviewproject.model.ServiceForDevice;
@@ -27,7 +27,7 @@ public class OrderServiceTest {
     @Mock
     private DeviceRepository deviceRepository;
     @Mock
-    private ServiceOnDeviceRepository serviceOnDeviceRepository;
+    private ServiceForDeviceRepository serviceForDeviceRepository;
     @Mock
     private ServiceCache serviceCache;
 
@@ -61,7 +61,7 @@ public class OrderServiceTest {
         when(deviceRepository.findById(deviceId)).thenReturn(
                 Optional.of(OrderTestFactory.getInstance().createDeviceWin())
         );
-        when (serviceOnDeviceRepository.save(any())).thenReturn(
+        when (serviceForDeviceRepository.save(any())).thenReturn(
                 OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService());
         ServiceForDevice serviceOnDevice = orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName);
         Assertions.assertFalse(Optional.of(serviceOnDevice).isEmpty());
