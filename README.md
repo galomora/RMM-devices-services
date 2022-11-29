@@ -1,3 +1,21 @@
+# Notes about the implementation
+## Domain model classes
+The following classes are implemented as part of the model:
+* TechService
+  Service to be applied to a device, e.g. "Antivirus for Windows"
+* TechServiceType
+Type for grouping TechServices, e.g. "Antivirus"
+* Device
+A device that could have different services assigned
+* ServiceForDevice
+A TechService assigned for a device
+* Order
+Group of related ServiceForDevices
+* Billing
+Representation of the billing according to the requirement
+
+## REST Endpoints
+### test
 # NinjaOne Backend Interview Project
 
 This project contains [Instructions](INSTRUCTIONS.md) that must be read in order to perform NinjaOne's code assessment.
