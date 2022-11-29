@@ -41,9 +41,9 @@ public class OrderServiceTest {
 
     @BeforeAll
     public static void init () {
-         orderId = 1L;
-         deviceId = "DEV1";
-         serviceName = "Device Service";
+        orderId = 1L;
+        deviceId = "DEV1";
+        serviceName = "Device Service";
     }
 
     @Test
@@ -57,8 +57,8 @@ public class OrderServiceTest {
     public void addServiceOnDeviceTest () throws OrderNotFoundException {
         when (orderRepository.findById(orderId)).thenReturn(
                 Optional.of(OrderTestFactory.getInstance().createOrderWinWinMacServices()));
-        when(serviceCache.getAllServices()).thenReturn(
-                TechServiceTestFactory.getInstance().createTechServiceMap());
+        when(serviceCache.getService(serviceName)).thenReturn(
+                Optional.of(OrderTestFactory.getInstance().createServiceOfTypeDeviceService()));
         when(deviceRepository.findById(deviceId)).thenReturn(
                 Optional.of(OrderTestFactory.getInstance().createDeviceWin())
         );
