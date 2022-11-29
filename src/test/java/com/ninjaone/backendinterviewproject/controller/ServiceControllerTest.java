@@ -2,9 +2,7 @@ package com.ninjaone.backendinterviewproject.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ninjaone.backendinterviewproject.BackendInterviewProjectApplication;
-import com.ninjaone.backendinterviewproject.controller.ServiceController;
 import com.ninjaone.backendinterviewproject.controller.request.ServiceRequest;
-import com.ninjaone.backendinterviewproject.model.Device;
 import com.ninjaone.backendinterviewproject.model.OperatingSystem;
 import com.ninjaone.backendinterviewproject.model.OrderTestFactory;
 import com.ninjaone.backendinterviewproject.model.TechService;
@@ -25,7 +23,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;

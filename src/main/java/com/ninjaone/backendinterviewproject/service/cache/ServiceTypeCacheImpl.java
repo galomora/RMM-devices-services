@@ -1,6 +1,5 @@
 package com.ninjaone.backendinterviewproject.service.cache;
 
-import com.ninjaone.backendinterviewproject.database.ServiceRepository;
 import com.ninjaone.backendinterviewproject.database.ServiceTypeRepository;
 import com.ninjaone.backendinterviewproject.model.TechServiceType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +7,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;

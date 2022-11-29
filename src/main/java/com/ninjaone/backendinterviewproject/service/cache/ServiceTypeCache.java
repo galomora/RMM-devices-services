@@ -1,6 +1,5 @@
 package com.ninjaone.backendinterviewproject.service.cache;
 
-import com.ninjaone.backendinterviewproject.model.TechService;
 import com.ninjaone.backendinterviewproject.model.TechServiceType;
 
 import java.util.Map;

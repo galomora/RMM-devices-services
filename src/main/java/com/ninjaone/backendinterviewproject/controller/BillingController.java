@@ -1,6 +1,5 @@
 package com.ninjaone.backendinterviewproject.controller;
 
-import com.ninjaone.backendinterviewproject.model.Device;
 import com.ninjaone.backendinterviewproject.model.billing.Billing;
 import com.ninjaone.backendinterviewproject.service.BillingService;
 import com.ninjaone.backendinterviewproject.service.exception.OrderNotFoundException;

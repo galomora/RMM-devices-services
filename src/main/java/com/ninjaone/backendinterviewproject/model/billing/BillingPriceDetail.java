@@ -7,7 +7,6 @@ import com.ninjaone.backendinterviewproject.model.TechServiceType;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class BillingPriceDetail {
     private TechServiceType serviceType;

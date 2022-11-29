@@ -2,10 +2,8 @@ package com.ninjaone.backendinterviewproject.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ninjaone.backendinterviewproject.BackendInterviewProjectApplication;
-import com.ninjaone.backendinterviewproject.controller.request.ServiceOnDeviceRequest;
-import com.ninjaone.backendinterviewproject.model.*;
-import com.ninjaone.backendinterviewproject.service.OrderService;
-import com.ninjaone.backendinterviewproject.service.ServiceOnDeviceService;
+import com.ninjaone.backendinterviewproject.model.TechServiceTestFactory;
+import com.ninjaone.backendinterviewproject.model.TechServiceType;
 import com.ninjaone.backendinterviewproject.service.TechServiceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

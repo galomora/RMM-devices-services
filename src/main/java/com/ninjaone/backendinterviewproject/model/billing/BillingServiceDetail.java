@@ -4,7 +4,6 @@ import com.ninjaone.backendinterviewproject.model.OperatingSystem;
 import com.ninjaone.backendinterviewproject.model.ServiceOnDevice;
 import com.ninjaone.backendinterviewproject.model.TechServiceType;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

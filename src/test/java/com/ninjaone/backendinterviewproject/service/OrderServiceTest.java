@@ -6,7 +6,6 @@ import com.ninjaone.backendinterviewproject.database.ServiceOnDeviceRepository;
 import com.ninjaone.backendinterviewproject.model.Order;
 import com.ninjaone.backendinterviewproject.model.OrderTestFactory;
 import com.ninjaone.backendinterviewproject.model.ServiceOnDevice;
-import com.ninjaone.backendinterviewproject.model.TechServiceTestFactory;
 import com.ninjaone.backendinterviewproject.service.cache.ServiceCache;
 import com.ninjaone.backendinterviewproject.service.exception.OrderNotFoundException;
 import org.junit.jupiter.api.Assertions;

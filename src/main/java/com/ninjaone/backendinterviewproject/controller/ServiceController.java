@@ -1,10 +1,8 @@
 package com.ninjaone.backendinterviewproject.controller;
 
 import com.ninjaone.backendinterviewproject.controller.request.ServiceRequest;
-import com.ninjaone.backendinterviewproject.model.Device;
 import com.ninjaone.backendinterviewproject.model.OperatingSystem;
 import com.ninjaone.backendinterviewproject.model.TechService;
-import com.ninjaone.backendinterviewproject.service.OrderService;
 import com.ninjaone.backendinterviewproject.service.TechServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
