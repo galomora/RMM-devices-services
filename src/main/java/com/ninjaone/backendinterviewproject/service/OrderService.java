@@ -1,11 +1,8 @@
 package com.ninjaone.backendinterviewproject.service;
 
 import com.ninjaone.backendinterviewproject.model.*;
-import com.ninjaone.backendinterviewproject.service.exception.DeviceNotFoundException;
 import com.ninjaone.backendinterviewproject.service.exception.OrderNotFoundException;
 
-import java.util.List;
-import java.util.Optional;
 
 public interface OrderService {
     /**
