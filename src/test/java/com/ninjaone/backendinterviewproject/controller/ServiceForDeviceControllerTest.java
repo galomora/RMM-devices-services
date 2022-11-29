@@ -36,7 +36,7 @@ public class ServiceForDeviceControllerTest {
     private static final String SERVICE_ID = "Antivirus for Windows";
     private static final String DEVICE_ID = "DEV1";
     private static final Long ORDER_ID = 1L;
-    private static final Long SERVICE_ON_DEVICE_ID = 1L;
+    private static final Long SERVICE_FOR_DEVICE_ID = 1L;
 
     @Autowired
     private MockMvc mockMvc;
@@ -65,8 +65,8 @@ public class ServiceForDeviceControllerTest {
 
     @Test
     void getServiceForDeviceTest() throws Exception {
-        when(serviceForDeviceService.getServiceForDevice(SERVICE_ON_DEVICE_ID)).thenReturn(Optional.of(serviceForDevice));
-        mockMvc.perform(get("/service-for-device/" + SERVICE_ON_DEVICE_ID))
+        when(serviceForDeviceService.getServiceForDevice(SERVICE_FOR_DEVICE_ID)).thenReturn(Optional.of(serviceForDevice));
+        mockMvc.perform(get("/service-for-device/" + SERVICE_FOR_DEVICE_ID))
                 .andExpect(status().isFound())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string(objectMapper.writeValueAsString(serviceForDevice)));
@@ -100,8 +100,8 @@ public class ServiceForDeviceControllerTest {
 
     @Test
     void deleteServiceTest() throws Exception {
-        doNothing().when(serviceForDeviceService).deleteServiceForDevice(SERVICE_ON_DEVICE_ID);
-        mockMvc.perform(delete("/service-for-device/" + SERVICE_ON_DEVICE_ID))
+        doNothing().when(serviceForDeviceService).deleteServiceForDevice(SERVICE_FOR_DEVICE_ID);
+        mockMvc.perform(delete("/service-for-device/" + SERVICE_FOR_DEVICE_ID))
                 .andExpect(status().isNoContent());
     }
 }
