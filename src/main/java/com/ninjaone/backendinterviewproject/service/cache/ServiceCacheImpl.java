@@ -15,7 +15,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ServiceCacheImpl implements ServiceCache {
     private static Map<String, TechService> allServices;
 
-    @Autowired
     private ServiceRepository serviceRepository;
 
     @Autowired
@@ -29,11 +28,9 @@ public class ServiceCacheImpl implements ServiceCache {
     @PostConstruct
     public void init () {
         searchAllServices ();
-        System.out.println("services "  + allServices.size());
     }
 
     private void searchAllServices () {
-        System.out.println("to search all");
         allServices.clear();
         this.serviceRepository.findAll().forEach(service ->
                 allServices.put(service.getId(), service));

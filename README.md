@@ -6,7 +6,7 @@ The following classes are implemented as part of the model:
 ### TechServiceType
 Type for grouping TechServices, e.g. "Antivirus"
 ### OperatingSystem
-Enumeration with the values: WINDOWS, GNULINUX, MAC, ANY, OTHER. 
+Enumeration with the values: WINDOWS, GNULINUX, MAC, ANY, OTHER. <br/>
 These values are allowed for the operating system attribute in the classes
 ### Device
 A device that could have different services assigned
@@ -21,10 +21,10 @@ Representation of the billing according to the requirement, generated from an or
 
 ### Order
 #### Create order
-http://localhost:8080/order
-Headers:
+http://localhost:8080/order<br/>
+Headers:<br/>
 * Content-Type : application/json
-Method: POST
+Method: POST<br/>
 Example response:
 ```json
 {
@@ -32,10 +32,10 @@ Example response:
 }
 ```
 #### Get order
-http://localhost:8080/order/{id}
-Method: GET
-Example
-http://localhost:8080/order/1
+http://localhost:8080/order/{id}<br/>
+Method: GET<br/>
+Example:<br/>
+http://localhost:8080/order/1<br/>
 Example response body:
 ```json
 {
@@ -44,10 +44,10 @@ Example response body:
 ```
 ### Device
 #### Create device
-http://localhost:8080/device
-Headers:
+http://localhost:8080/device<br/>
+Headers:<br/>
 * Content-Type : application/json
-Method: POST
+Method: POST<br/>
 Example request body:
 ```json
 {
@@ -66,10 +66,10 @@ Example response body:
 }
 ```
 #### Get device
-http://localhost:8080/device/{id}
-Method: GET
-Example
-http://localhost:8080/order/DEV1
+http://localhost:8080/device/{id}<br/>
+Method: GET<br/>
+Example:<br/>
+http://localhost:8080/order/DEV1<br/>
 Example response body:
 ```json
 {
@@ -77,6 +77,116 @@ Example response body:
   "systemName": null,
   "type": "MAC",
   "operatingSystem": "MAC"
+}
+```
+#### Delete device
+http://localhost:8080/device/{id}<br/>
+Method: DELETE<br/>
+Example:<br/>
+http://localhost:8080/order/DEV1<br/>
+No content response
+### Service Type
+#### Get all services types
+http://localhost:8080/service-type/all<br/>
+Method: GET<br/>
+Example response body:
+```json
+[
+  {
+    "name": "BACKUP",
+    "description": "Backup"
+  },
+  {
+    "name": "ANTIVIRUS",
+    "description": "Antivirus"
+  },
+  {
+    "name": "SCREEN_SHARE",
+    "description": "Screen Share"
+  },
+  {
+    "name": "SERVICE_DEVICE",
+    "description": "Service Device"
+  }
+]
+```
+### Service
+#### Create service
+http://localhost:8080/service<br/>
+Headers:<br/>
+* Content-Type : application/json 
+Method: POST<br/>
+Example request body:
+```json
+{
+  "name" : "ANTIVIRUS_MAC",
+  "price" : 5.0,
+  "operatingSystem" : "MAC",
+  "type" : "ANTIVIRUS"
+}
+```
+Example response body:
+```json
+{
+  "name": "ANTIVIRUS_MAC",
+  "price": 5.0,
+  "operatingSystem": "MAC",
+  "type": {
+    "name": "ANTIVIRUS",
+    "description": "Antivirus"
+  }
+}
+```
+#### Get service
+http://localhost:8080/service/{id}<br/>
+Method: GET<br/>
+Example:<br/>
+http://localhost:8080/service/SERVICE_DEVICE<br/>
+Example response body:
+```json
+{
+  "name": "SERVICE_DEVICE",
+  "price": 4.00,
+  "operatingSystem": "ANY",
+  "type": {
+    "name": "SERVICE_DEVICE",
+    "description": "Service Device"
+  }
+}
+```
+#### Delete device
+http://localhost:8080/service/{id}<br/>
+Method: DELETE<br/>
+Example:<br/>
+http://localhost:8080/service/ANTIVIRUS_MAC
+No content response
+### Service for device
+#### Create service for device
+http://localhost:8080/service-for-device<br/>
+Headers:<br/>
+* Content-Type : application/json
+  Method: POST<br/>
+  Example request body:
+```json
+{
+  "serviceName" : "SERVICE_DEVICE",
+  "deviceId" : "DEV1",
+  "orderId" : 1
+}
+```
+Example response body:
+```json
+{
+  "id": 1,
+  "priceApplied": 4.00,
+  "type": {
+    "name": "SERVICE_DEVICE",
+    "description": "Service Device"
+  },
+  "deviceOS": "MAC",
+  "deviceId": "DEV1",
+  "serviceName": "SERVICE_DEVICE",
+  "orderId": 1
 }
 ```
 
