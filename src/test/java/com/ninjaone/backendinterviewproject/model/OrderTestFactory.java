@@ -83,24 +83,24 @@ public class OrderTestFactory {
     public Order createOrderWinWinMacServices () {
         Order order = OrderTestFactory.getInstance().createOrder();
         ServiceForDevice serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceMacDeviceService();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         return order;
     }
 
     public Order createOrderWinMacTwoServiceTypes () {
         Order order = OrderTestFactory.getInstance().createOrder();
         ServiceForDevice serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceMacDeviceService();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceMacAntivirus();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinAntivirus();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         return order;
     }
 

@@ -20,12 +20,12 @@ public class Order {
         servicesOnDevice = new ArrayList<>();
     }
 
-    public void addServiceOnDevice (ServiceForDevice serviceForDevice) {
+    public void addServiceForDevice(ServiceForDevice serviceForDevice) {
         serviceForDevice.setOrder(this);
         this.servicesOnDevice.add(serviceForDevice);
     }
 
-    public void removeServiceOnDevice (ServiceForDevice serviceForDevice) {
+    public void removeServiceForDevice(ServiceForDevice serviceForDevice) {
         this.servicesOnDevice.remove(serviceForDevice);
     }
 

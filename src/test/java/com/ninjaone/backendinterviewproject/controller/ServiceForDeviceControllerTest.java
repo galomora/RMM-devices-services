@@ -2,7 +2,7 @@ package com.ninjaone.backendinterviewproject.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ninjaone.backendinterviewproject.BackendInterviewProjectApplication;
-import com.ninjaone.backendinterviewproject.controller.request.ServiceOnDeviceRequest;
+import com.ninjaone.backendinterviewproject.controller.request.ServiceForDeviceRequest;
 import com.ninjaone.backendinterviewproject.model.*;
 import com.ninjaone.backendinterviewproject.service.OrderService;
 import com.ninjaone.backendinterviewproject.service.ServiceForDeviceService;
@@ -50,14 +50,14 @@ public class ServiceForDeviceControllerTest {
     private ServiceForDeviceService serviceForDeviceService;
 
     private Order order;
-    private ServiceOnDeviceRequest request;
+    private ServiceForDeviceRequest request;
     private ServiceForDevice serviceForDevice;
 
     @BeforeEach
     void init () {
         order = OrderTestFactory.getInstance().createOrder();
         serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinAntivirus();
-        request = new ServiceOnDeviceRequest();
+        request = new ServiceForDeviceRequest();
         request.setDeviceId(DEVICE_ID);
         request.setServiceName(SERVICE_ID);
         request.setOrderId(ORDER_ID);

@@ -1,6 +1,6 @@
 package com.ninjaone.backendinterviewproject.controller;
 
-import com.ninjaone.backendinterviewproject.controller.request.ServiceOnDeviceRequest;
+import com.ninjaone.backendinterviewproject.controller.request.ServiceForDeviceRequest;
 import com.ninjaone.backendinterviewproject.model.ServiceForDevice;
 import com.ninjaone.backendinterviewproject.service.OrderService;
 import com.ninjaone.backendinterviewproject.service.ServiceForDeviceService;
@@ -29,7 +29,7 @@ public class ServiceForDeviceController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ServiceForDevice createServiceOnDevice (@RequestBody @Validated ServiceOnDeviceRequest request) {
+    public ServiceForDevice createServiceForDevice(@RequestBody @Validated ServiceForDeviceRequest request) {
         try {
             return this.orderService.addServiceForDeviceToOrder(request.getOrderId(),
                     request.getDeviceId(), request.getServiceName());

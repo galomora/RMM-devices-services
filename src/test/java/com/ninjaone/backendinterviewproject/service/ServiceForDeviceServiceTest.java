@@ -23,32 +23,32 @@ public class ServiceForDeviceServiceTest {
     @InjectMocks
     ServiceForDeviceServiceImpl serviceForDeviceService;
 
-    private static final Long SERVICE_ON_DEVICE_ID = 1L;
+    private static final Long SERVICE_FOR_DEVICE_ID = 1L;
 
     @Test
     public void getServiceForDeviceTest() {
-        when (serviceForDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
+        when (serviceForDeviceRepository.findById(SERVICE_FOR_DEVICE_ID)).thenReturn(
                 Optional.of(OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService()));
-        Optional<ServiceForDevice> optionalServiceOnDevice =
-                serviceForDeviceService.getServiceForDevice(SERVICE_ON_DEVICE_ID);
-        Assertions.assertFalse(optionalServiceOnDevice.isEmpty());
+        Optional<ServiceForDevice> optionalServiceForDevice =
+                serviceForDeviceService.getServiceForDevice(SERVICE_FOR_DEVICE_ID);
+        Assertions.assertFalse(optionalServiceForDevice.isEmpty());
         verify(serviceForDeviceRepository, times(1)).findById(any());
     }
 
     @Test
     public void getServiceForDeviceNoResultTest() {
-        when (serviceForDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
+        when (serviceForDeviceRepository.findById(SERVICE_FOR_DEVICE_ID)).thenReturn(
                 Optional.empty());
-        Optional<ServiceForDevice> optionalServiceOnDevice =
-                serviceForDeviceService.getServiceForDevice(SERVICE_ON_DEVICE_ID);
-        Assertions.assertTrue(optionalServiceOnDevice.isEmpty());
+        Optional<ServiceForDevice> optionalServiceForDevice =
+                serviceForDeviceService.getServiceForDevice(SERVICE_FOR_DEVICE_ID);
+        Assertions.assertTrue(optionalServiceForDevice.isEmpty());
         verify(serviceForDeviceRepository, times(1)).findById(any());
     }
 
     @Test
     public void deleteServiceForDeviceTest() {
-        doNothing().when(serviceForDeviceRepository).deleteById(SERVICE_ON_DEVICE_ID);
-        serviceForDeviceService.deleteServiceForDevice(SERVICE_ON_DEVICE_ID);
+        doNothing().when(serviceForDeviceRepository).deleteById(SERVICE_FOR_DEVICE_ID);
+        serviceForDeviceService.deleteServiceForDevice(SERVICE_FOR_DEVICE_ID);
         verify(serviceForDeviceRepository, times(1)).deleteById(any());
     }
 

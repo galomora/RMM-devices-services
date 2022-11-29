@@ -16,10 +16,10 @@ public class OrderTest {
     }
 
     @Test
-    public void testAddServiceOnDeviceToOrder () {
+    public void testAddServiceForDeviceToOrder() {
         Order order = OrderTestFactory.getInstance().createOrder();
         ServiceForDevice serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
-        order.addServiceOnDevice(serviceForDevice);
+        order.addServiceForDevice(serviceForDevice);
         Assertions.assertFalse(order.getServicesOnDevice().isEmpty());
         ServiceForDevice firstService = order.getServicesOnDevice().stream().findFirst().get();
         TechService service = OrderTestFactory.getInstance().createServiceOfTypeDeviceService();

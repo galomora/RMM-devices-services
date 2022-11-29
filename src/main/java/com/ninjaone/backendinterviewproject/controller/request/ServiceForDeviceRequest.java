@@ -3,7 +3,7 @@ package com.ninjaone.backendinterviewproject.controller.request;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class ServiceOnDeviceRequest {
+public class ServiceForDeviceRequest {
     @NotNull
     private String serviceName;
     @NotNull
