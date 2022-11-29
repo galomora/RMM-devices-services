@@ -5,6 +5,9 @@ The following classes are implemented as part of the model:
   Service to be applied to a device, e.g. "Antivirus for Windows"
 ### TechServiceType
 Type for grouping TechServices, e.g. "Antivirus"
+### OperatingSystem
+Enumeration with the values: WINDOWS, GNULINUX, MAC, ANY, OTHER. 
+These values are allowed for the operating system attribute in the classes
 ### Device
 A device that could have different services assigned
 ### ServiceForDevice
@@ -12,14 +15,72 @@ TechService assigned for a device
 ### Order
 Group of related ServiceForDevices
 ### Billing
-Representation of the billing according to the requirement
+Representation of the billing according to the requirement, generated from an order
 
 ## REST Endpoints
 
-#### eese
+### Order
+#### Create order
+http://localhost:8080/order
+Headers:
+* Content-Type : application/json
+Method: POST
+Example response:
+```json
+{
+    "id": 1
+}
+```
+#### Get order
+http://localhost:8080/order/{id}
+Method: GET
+Example
+http://localhost:8080/order/1
+Example response body:
+```json
+{
+    "id": 1
+}
+```
+### Device
+#### Create device
+http://localhost:8080/device
+Headers:
+* Content-Type : application/json
+Method: POST
+Example request body:
+```json
+{
+  "id" : "DEV1",
+  "type" : "MAC",
+  "operatingSystem" : "MAC"
+}
+```
+Example response body:
+```json
+{
+  "id": "DEV1",
+  "systemName": null,
+  "type": "MAC",
+  "operatingSystem": "MAC"
+}
+```
+#### Get device
+http://localhost:8080/device/{id}
+Method: GET
+Example
+http://localhost:8080/order/DEV1
+Example response body:
+```json
+{
+  "id": "DEV1",
+  "systemName": null,
+  "type": "MAC",
+  "operatingSystem": "MAC"
+}
+```
 
 
-### test
 # NinjaOne Backend Interview Project
 
 This project contains [Instructions](INSTRUCTIONS.md) that must be read in order to perform NinjaOne's code assessment.
