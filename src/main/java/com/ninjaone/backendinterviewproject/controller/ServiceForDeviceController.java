@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/service-on-device")
+@RequestMapping("/service-for-device")
 public class ServiceForDeviceController {
     private OrderService orderService;
     private ServiceForDeviceService serviceForDeviceService;
@@ -31,7 +31,7 @@ public class ServiceForDeviceController {
     @ResponseStatus(HttpStatus.CREATED)
     public ServiceForDevice createServiceOnDevice (@RequestBody @Validated ServiceOnDeviceRequest request) {
         try {
-            return this.orderService.addServiceOnDeviceToOrder(request.getOrderId(),
+            return this.orderService.addServiceForDeviceToOrder(request.getOrderId(),
                     request.getDeviceId(), request.getServiceName());
         } catch (OrderNotFoundException e) {
             throw new ResponseStatusException(

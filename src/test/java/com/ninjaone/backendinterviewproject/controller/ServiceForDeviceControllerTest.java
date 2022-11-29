@@ -66,7 +66,7 @@ public class ServiceForDeviceControllerTest {
     @Test
     void getServiceForDeviceTest() throws Exception {
         when(serviceForDeviceService.getServiceForDevice(SERVICE_ON_DEVICE_ID)).thenReturn(Optional.of(serviceForDevice));
-        mockMvc.perform(get("/service-on-device/" + SERVICE_ON_DEVICE_ID))
+        mockMvc.perform(get("/service-for-device/" + SERVICE_ON_DEVICE_ID))
                 .andExpect(status().isFound())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string(objectMapper.writeValueAsString(serviceForDevice)));
@@ -74,11 +74,11 @@ public class ServiceForDeviceControllerTest {
 
     @Test
     public void postServiceForDeviceTest() throws Exception {
-        when(orderService.addServiceOnDeviceToOrder(request.getOrderId(),
+        when(orderService.addServiceForDeviceToOrder(request.getOrderId(),
                 request.getDeviceId(), request.getServiceName())).thenReturn(serviceForDevice);
         String serviceEntityString = objectMapper.writeValueAsString(serviceForDevice);
         String requestString = objectMapper.writeValueAsString(request);
-        mockMvc.perform(post("/service-on-device")
+        mockMvc.perform(post("/service-for-device")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestString))
                 .andExpect(status().isCreated())
@@ -87,12 +87,12 @@ public class ServiceForDeviceControllerTest {
 
     @Test
     public void postServiceNotValidRequestTest () throws Exception {
-        when(orderService.addServiceOnDeviceToOrder(request.getOrderId(),
+        when(orderService.addServiceForDeviceToOrder(request.getOrderId(),
                 request.getDeviceId(), request.getServiceName())).thenReturn(serviceForDevice);
         request.setOrderId(-1L);
         String serviceEntityString = objectMapper.writeValueAsString(serviceForDevice);
         String requestString = objectMapper.writeValueAsString(request);
-        mockMvc.perform(post("/service-on-device")
+        mockMvc.perform(post("/service-for-device")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestString))
                 .andExpect(status().isBadRequest());
@@ -101,7 +101,7 @@ public class ServiceForDeviceControllerTest {
     @Test
     void deleteServiceTest() throws Exception {
         doNothing().when(serviceForDeviceService).deleteServiceForDevice(SERVICE_ON_DEVICE_ID);
-        mockMvc.perform(delete("/service-on-device/" + SERVICE_ON_DEVICE_ID))
+        mockMvc.perform(delete("/service-for-device/" + SERVICE_ON_DEVICE_ID))
                 .andExpect(status().isNoContent());
     }
 }

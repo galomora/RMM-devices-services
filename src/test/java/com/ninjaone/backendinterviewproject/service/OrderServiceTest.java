@@ -53,7 +53,7 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void addServiceOnDeviceTest () throws OrderNotFoundException {
+    public void addServiceForDeviceTest() throws OrderNotFoundException {
         when (orderRepository.findById(orderId)).thenReturn(
                 Optional.of(OrderTestFactory.getInstance().createOrderWinWinMacServices()));
         when(serviceCache.getService(serviceName)).thenReturn(
@@ -63,16 +63,16 @@ public class OrderServiceTest {
         );
         when (serviceForDeviceRepository.save(any())).thenReturn(
                 OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService());
-        ServiceForDevice serviceForDevice = orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName);
+        ServiceForDevice serviceForDevice = orderService.addServiceForDeviceToOrder(orderId, deviceId, serviceName);
         Assertions.assertFalse(Optional.of(serviceForDevice).isEmpty());
-        Assertions.assertDoesNotThrow(() -> orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName));
+        Assertions.assertDoesNotThrow(() -> orderService.addServiceForDeviceToOrder(orderId, deviceId, serviceName));
     }
 
     @Test
-    public void addServiceOnDeviceNoOrderTest () throws OrderNotFoundException {
+    public void addServiceForDeviceNoOrderTest() throws OrderNotFoundException {
         when (orderRepository.findById(orderId)).thenReturn(Optional.empty());
         Assertions.assertThrows(OrderNotFoundException.class,
-                () -> orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName));
+                () -> orderService.addServiceForDeviceToOrder(orderId, deviceId, serviceName));
     }
 
     @Test

@@ -16,10 +16,10 @@ public interface OrderService {
      * @param orderId order ID
      * @param deviceId device ID
      * @param serviceName service ID
-     * @return ServiceOnDevice created and added to the order
+     * @return ServiceForDevice created and added to the order
      *
      */
-    public ServiceForDevice addServiceOnDeviceToOrder (Long orderId, String deviceId, String serviceName) throws OrderNotFoundException;
+    public ServiceForDevice addServiceForDeviceToOrder(Long orderId, String deviceId, String serviceName) throws OrderNotFoundException;
 
     /**
      * Gets an {@link Order} with details
