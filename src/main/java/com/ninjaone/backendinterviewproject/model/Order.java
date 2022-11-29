@@ -51,7 +51,7 @@ public class Order {
 
     @JsonIgnore
     public Map<OperatingSystem, List<ServiceForDevice>> getAllServicesBySystem () {
-        Map map = new HashMap<>();
+        Map<OperatingSystem, List<ServiceForDevice>> map = new HashMap<>();
         getDifferentSystems ().stream().forEach(system ->
                 map.put(system, getServicesByOS(system)));
         return map;
