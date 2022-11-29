@@ -5,7 +5,7 @@ import com.ninjaone.backendinterviewproject.BackendInterviewProjectApplication;
 import com.ninjaone.backendinterviewproject.controller.request.ServiceOnDeviceRequest;
 import com.ninjaone.backendinterviewproject.model.*;
 import com.ninjaone.backendinterviewproject.service.OrderService;
-import com.ninjaone.backendinterviewproject.service.ServiceOnDeviceService;
+import com.ninjaone.backendinterviewproject.service.ServiceForDeviceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {BackendInterviewProjectApplication.class})
-@WebMvcTest(ServiceOnDeviceController.class)
+@WebMvcTest(ServiceForDeviceController.class)
 @AutoConfigureMockMvc
 @AutoConfigureDataJpa
 public class ServiceOnDeviceControllerTest {
@@ -47,11 +47,11 @@ public class ServiceOnDeviceControllerTest {
     @MockBean
     private OrderService orderService;
     @MockBean
-    private ServiceOnDeviceService serviceOnDeviceService;
+    private ServiceForDeviceService serviceForDeviceService;
 
     private Order order;
     private ServiceOnDeviceRequest request;
-    private ServiceOnDevice serviceOnDevice;
+    private ServiceForDevice serviceOnDevice;
 
     @BeforeEach
     void init () {
@@ -65,7 +65,7 @@ public class ServiceOnDeviceControllerTest {
 
     @Test
     void getServiceOnDeviceTest() throws Exception {
-        when(serviceOnDeviceService.getServiceOnDevice(SERVICE_ON_DEVICE_ID)).thenReturn(Optional.of(serviceOnDevice));
+        when(serviceForDeviceService.getServiceOnDevice(SERVICE_ON_DEVICE_ID)).thenReturn(Optional.of(serviceOnDevice));
         mockMvc.perform(get("/service-on-device/" + SERVICE_ON_DEVICE_ID))
                 .andExpect(status().isFound())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -100,7 +100,7 @@ public class ServiceOnDeviceControllerTest {
 
     @Test
     void deleteServiceTest() throws Exception {
-        doNothing().when(serviceOnDeviceService).deleteServiceOnDevice(SERVICE_ON_DEVICE_ID);
+        doNothing().when(serviceForDeviceService).deleteServiceOnDevice(SERVICE_ON_DEVICE_ID);
         mockMvc.perform(delete("/service-on-device/" + SERVICE_ON_DEVICE_ID))
                 .andExpect(status().isNoContent());
     }

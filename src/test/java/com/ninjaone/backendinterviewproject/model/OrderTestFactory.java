@@ -52,29 +52,29 @@ public class OrderTestFactory {
         return order;
     }
 
-    public ServiceOnDevice createServiceOfDeviceWinDeviceService() {
-        ServiceOnDevice serviceOnDevice = new ServiceOnDevice(
+    public ServiceForDevice createServiceOfDeviceWinDeviceService() {
+        ServiceForDevice serviceOnDevice = new ServiceForDevice(
                 createServiceOfTypeDeviceService(), createDeviceWin()
         );
         return serviceOnDevice;
     }
 
-    public ServiceOnDevice createServiceOfDeviceMacDeviceService() {
-        ServiceOnDevice serviceOnDevice = new ServiceOnDevice(
+    public ServiceForDevice createServiceOfDeviceMacDeviceService() {
+        ServiceForDevice serviceOnDevice = new ServiceForDevice(
                 createServiceOfTypeDeviceService(), createDeviceMac()
         );
         return serviceOnDevice;
     }
 
-    public ServiceOnDevice createServiceOfDeviceWinAntivirus() {
-        ServiceOnDevice serviceOnDevice = new ServiceOnDevice(
+    public ServiceForDevice createServiceOfDeviceWinAntivirus() {
+        ServiceForDevice serviceOnDevice = new ServiceForDevice(
                 createServiceOfTypeAntivirus(), createDeviceWin()
         );
         return serviceOnDevice;
     }
 
-    public ServiceOnDevice createServiceOfDeviceMacAntivirus() {
-        ServiceOnDevice serviceOnDevice = new ServiceOnDevice(
+    public ServiceForDevice createServiceOfDeviceMacAntivirus() {
+        ServiceForDevice serviceOnDevice = new ServiceForDevice(
                 createServiceOfTypeAntivirus(), createDeviceMac()
         );
         return serviceOnDevice;
@@ -82,7 +82,7 @@ public class OrderTestFactory {
 
     public Order createOrderWinWinMacServices () {
         Order order = OrderTestFactory.getInstance().createOrder();
-        ServiceOnDevice serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
+        ServiceForDevice serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
         order.addServiceOnDevice(serviceOnDevice);
         serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
         order.addServiceOnDevice(serviceOnDevice);
@@ -93,7 +93,7 @@ public class OrderTestFactory {
 
     public Order createOrderWinMacTwoServiceTypes () {
         Order order = OrderTestFactory.getInstance().createOrder();
-        ServiceOnDevice serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
+        ServiceForDevice serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
         order.addServiceOnDevice(serviceOnDevice);
         serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceMacDeviceService();
         order.addServiceOnDevice(serviceOnDevice);

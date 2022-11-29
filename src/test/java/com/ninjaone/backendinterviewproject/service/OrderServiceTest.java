@@ -5,7 +5,7 @@ import com.ninjaone.backendinterviewproject.database.OrderRepository;
 import com.ninjaone.backendinterviewproject.database.ServiceOnDeviceRepository;
 import com.ninjaone.backendinterviewproject.model.Order;
 import com.ninjaone.backendinterviewproject.model.OrderTestFactory;
-import com.ninjaone.backendinterviewproject.model.ServiceOnDevice;
+import com.ninjaone.backendinterviewproject.model.ServiceForDevice;
 import com.ninjaone.backendinterviewproject.service.cache.ServiceCache;
 import com.ninjaone.backendinterviewproject.service.exception.OrderNotFoundException;
 import org.junit.jupiter.api.Assertions;
@@ -63,7 +63,7 @@ public class OrderServiceTest {
         );
         when (serviceOnDeviceRepository.save(any())).thenReturn(
                 OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService());
-        ServiceOnDevice serviceOnDevice = orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName);
+        ServiceForDevice serviceOnDevice = orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName);
         Assertions.assertFalse(Optional.of(serviceOnDevice).isEmpty());
         Assertions.assertDoesNotThrow(() -> orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName));
     }

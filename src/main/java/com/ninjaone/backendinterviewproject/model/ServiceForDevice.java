@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class ServiceOnDevice {
+public class ServiceForDevice {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -21,22 +21,22 @@ public class ServiceOnDevice {
     @Column(nullable = false, precision = 9, scale = 2)
     private BigDecimal priceApplied;
 
-    public ServiceOnDevice () {
+    public ServiceForDevice() {
 
     }
 
-    public ServiceOnDevice (TechService techService, Device device) {
+    public ServiceForDevice(TechService techService, Device device) {
         this.techService = techService;
         this.device = device;
         this.priceApplied = this.techService.getPrice();
     }
 
-    public ServiceOnDevice (TechService techService, Device device, BigDecimal price) {
+    public ServiceForDevice(TechService techService, Device device, BigDecimal price) {
         this (techService, device);
         this.priceApplied = price;
     }
 
-    public ServiceOnDevice (TechService techService, Device device, Order order) {
+    public ServiceForDevice(TechService techService, Device device, Order order) {
         this (techService, device);
         this.order = order;
     }

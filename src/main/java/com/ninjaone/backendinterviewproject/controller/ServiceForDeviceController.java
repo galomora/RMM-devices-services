@@ -1,9 +1,9 @@
 package com.ninjaone.backendinterviewproject.controller;
 
 import com.ninjaone.backendinterviewproject.controller.request.ServiceOnDeviceRequest;
-import com.ninjaone.backendinterviewproject.model.ServiceOnDevice;
+import com.ninjaone.backendinterviewproject.model.ServiceForDevice;
 import com.ninjaone.backendinterviewproject.service.OrderService;
-import com.ninjaone.backendinterviewproject.service.ServiceOnDeviceService;
+import com.ninjaone.backendinterviewproject.service.ServiceForDeviceService;
 import com.ninjaone.backendinterviewproject.service.exception.OrderNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,14 +14,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/service-on-device")
-public class ServiceOnDeviceController {
+public class ServiceForDeviceController {
     private OrderService orderService;
-    private ServiceOnDeviceService serviceOnDeviceService;
+    private ServiceForDeviceService serviceForDeviceService;
 
     @Autowired
-    public ServiceOnDeviceController(OrderService orderService, ServiceOnDeviceService serviceOnDeviceService) {
+    public ServiceForDeviceController(OrderService orderService, ServiceForDeviceService serviceForDeviceService) {
         this.orderService = orderService;
-        this.serviceOnDeviceService = serviceOnDeviceService;
+        this.serviceForDeviceService = serviceForDeviceService;
     }
 
     @RequestMapping (
@@ -29,7 +29,7 @@ public class ServiceOnDeviceController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ServiceOnDevice createServiceOnDevice (@RequestBody @Validated ServiceOnDeviceRequest request) {
+    public ServiceForDevice createServiceOnDevice (@RequestBody @Validated ServiceOnDeviceRequest request) {
         try {
             return this.orderService.addServiceOnDeviceToOrder(request.getOrderId(),
                     request.getDeviceId(), request.getServiceName());
@@ -43,15 +43,15 @@ public class ServiceOnDeviceController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.FOUND)
-    public ServiceOnDevice getService (@PathVariable Long id) {
-        return this.serviceOnDeviceService.getServiceOnDevice(id).orElseThrow();
+    public ServiceForDevice getService (@PathVariable Long id) {
+        return this.serviceForDeviceService.getServiceOnDevice(id).orElseThrow();
     }
 
     @RequestMapping (path="/{id}",
             method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteService (@PathVariable Long id) {
-        this.serviceOnDeviceService.deleteServiceOnDevice(id);
+        this.serviceForDeviceService.deleteServiceOnDevice(id);
     }
 
 }

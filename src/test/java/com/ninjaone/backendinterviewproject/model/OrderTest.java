@@ -18,10 +18,10 @@ public class OrderTest {
     @Test
     public void testAddServiceOnDeviceToOrder () {
         Order order = OrderTestFactory.getInstance().createOrder();
-        ServiceOnDevice serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
+        ServiceForDevice serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
         order.addServiceOnDevice(serviceOnDevice);
         Assertions.assertFalse(order.getServicesOnDevice().isEmpty());
-        ServiceOnDevice firstService = order.getServicesOnDevice().stream().findFirst().get();
+        ServiceForDevice firstService = order.getServicesOnDevice().stream().findFirst().get();
         TechService service = OrderTestFactory.getInstance().createServiceOfTypeDeviceService();
         Assertions.assertEquals(
                 firstService.getPriceApplied(), service.getPrice());
@@ -38,7 +38,7 @@ public class OrderTest {
     @Test
     public void testGetAllServicesBySystem () {
         Order order = OrderTestFactory.getInstance().createOrderWinWinMacServices();
-        Map<OperatingSystem, List<ServiceOnDevice>> servicesBySystem = order.getAllServicesBySystem();
+        Map<OperatingSystem, List<ServiceForDevice>> servicesBySystem = order.getAllServicesBySystem();
         Assertions.assertFalse(servicesBySystem.isEmpty());
         Assertions.assertTrue(servicesBySystem.get(OperatingSystem.WINDOWS).size() == 2);
         Assertions.assertTrue(servicesBySystem.get(OperatingSystem.MAC).size() == 1);

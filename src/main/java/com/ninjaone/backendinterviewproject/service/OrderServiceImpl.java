@@ -30,12 +30,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public ServiceOnDevice addServiceOnDeviceToOrder(Long orderId, String deviceId, String serviceName) throws OrderNotFoundException {
+    public ServiceForDevice addServiceOnDeviceToOrder(Long orderId, String deviceId, String serviceName) throws OrderNotFoundException {
         Optional<Order> optionalOrder = this.orderRepository.findById(orderId);
         Order order = optionalOrder.orElseThrow(() -> new OrderNotFoundException("Not found order with id " + orderId));
         TechService service = this.serviceCache.getService(serviceName).orElseThrow();
         Device device = this.deviceRepository.findById(deviceId).orElseThrow();
-        ServiceOnDevice serviceOnDeviceToSave = new ServiceOnDevice(service, device, order );
+        ServiceForDevice serviceOnDeviceToSave = new ServiceForDevice(service, device, order );
         return serviceOnDeviceRepository.save(serviceOnDeviceToSave);
     }
 

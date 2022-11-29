@@ -14,23 +14,23 @@ public class Order {
     private Long id;
     @OneToMany (mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnore
-    private List<ServiceOnDevice> servicesOnDevice;
+    private List<ServiceForDevice> servicesOnDevice;
 
     public Order () {
         servicesOnDevice = new ArrayList<>();
     }
 
-    public void addServiceOnDevice (ServiceOnDevice serviceOnDevice) {
+    public void addServiceOnDevice (ServiceForDevice serviceOnDevice) {
         serviceOnDevice.setOrder(this);
         this.servicesOnDevice.add(serviceOnDevice);
     }
 
-    public void removeServiceOnDevice (ServiceOnDevice serviceOnDevice) {
+    public void removeServiceOnDevice (ServiceForDevice serviceOnDevice) {
         this.servicesOnDevice.remove(serviceOnDevice);
     }
 
     @JsonIgnore
-    public List<ServiceOnDevice> getServicesOnDevice () {
+    public List<ServiceForDevice> getServicesOnDevice () {
         return this.servicesOnDevice;
     }
 
@@ -44,13 +44,13 @@ public class Order {
     }
 
     @JsonIgnore
-    public List<ServiceOnDevice> getServicesByOS (OperatingSystem system) {
+    public List<ServiceForDevice> getServicesByOS (OperatingSystem system) {
         return this.servicesOnDevice.stream().filter(service -> system.equals(service.getDeviceOS()))
                 .collect(Collectors.toList());
     }
 
     @JsonIgnore
-    public Map<OperatingSystem, List<ServiceOnDevice>> getAllServicesBySystem () {
+    public Map<OperatingSystem, List<ServiceForDevice>> getAllServicesBySystem () {
         Map map = new HashMap<>();
         getDifferentSystems ().stream().forEach(system ->
                 map.put(system, getServicesByOS(system)));
@@ -58,7 +58,7 @@ public class Order {
     }
 
     @JsonIgnore
-    public Map<TechServiceType, List<ServiceOnDevice>> getAllServicesByServiceType () {
+    public Map<TechServiceType, List<ServiceForDevice>> getAllServicesByServiceType () {
         return servicesOnDevice.stream().collect(Collectors.groupingBy(service -> service.getType()));
     }
 

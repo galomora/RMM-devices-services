@@ -35,7 +35,7 @@ public class Billing {
 
     public void computeTotal() {
         BigDecimal result = BigDecimal.ZERO;
-        for (ServiceOnDevice service : order.getServicesOnDevice()) {
+        for (ServiceForDevice service : order.getServicesOnDevice()) {
             result = result.add(service.getPriceApplied());
         }
         total = BigDecimal.ZERO.add(result);
@@ -43,7 +43,7 @@ public class Billing {
 
     public void computeTotal(List<TechService> servicesWithPrice) {
         BigDecimal result = BigDecimal.ZERO;
-        for (ServiceOnDevice serviceOnDevice : order.getServicesOnDevice()) {
+        for (ServiceForDevice serviceOnDevice : order.getServicesOnDevice()) {
             TechService currentService = mapServicesByName(servicesWithPrice)
                     .get(serviceOnDevice.getServiceName());
             result = result.add(currentService.getPrice());
@@ -52,7 +52,7 @@ public class Billing {
     }
 
     public void computeServiceDetails () {
-        Map<OperatingSystem, List<ServiceOnDevice>> servicesBySystem = order.getAllServicesBySystem();
+        Map<OperatingSystem, List<ServiceForDevice>> servicesBySystem = order.getAllServicesBySystem();
         servicesBySystem.entrySet().stream().forEach(entry -> {
             serviceDetails.add(new BillingServiceDetail(entry.getKey(), entry.getValue()));
         });

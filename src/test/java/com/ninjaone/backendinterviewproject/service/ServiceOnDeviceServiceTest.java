@@ -2,7 +2,7 @@ package com.ninjaone.backendinterviewproject.service;
 
 import com.ninjaone.backendinterviewproject.database.ServiceOnDeviceRepository;
 import com.ninjaone.backendinterviewproject.model.OrderTestFactory;
-import com.ninjaone.backendinterviewproject.model.ServiceOnDevice;
+import com.ninjaone.backendinterviewproject.model.ServiceForDevice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +21,7 @@ public class ServiceOnDeviceServiceTest {
     private ServiceOnDeviceRepository serviceOnDeviceRepository;
 
     @InjectMocks
-    ServiceOnDeviceServiceImpl serviceOnDeviceService;
+    ServiceForDeviceServiceImpl serviceOnDeviceService;
 
     private static final Long SERVICE_ON_DEVICE_ID = 1L;
 
@@ -29,7 +29,7 @@ public class ServiceOnDeviceServiceTest {
     public void getServiceOnDeviceTest () {
         when (serviceOnDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
                 Optional.of(OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService()));
-        Optional<ServiceOnDevice> optionalServiceOnDevice =
+        Optional<ServiceForDevice> optionalServiceOnDevice =
                 serviceOnDeviceService.getServiceOnDevice(SERVICE_ON_DEVICE_ID);
         Assertions.assertFalse(optionalServiceOnDevice.isEmpty());
         verify(serviceOnDeviceRepository, times(1)).findById(any());
@@ -39,7 +39,7 @@ public class ServiceOnDeviceServiceTest {
     public void getServiceOnDeviceNoResultTest () {
         when (serviceOnDeviceRepository.findById(SERVICE_ON_DEVICE_ID)).thenReturn(
                 Optional.empty());
-        Optional<ServiceOnDevice> optionalServiceOnDevice =
+        Optional<ServiceForDevice> optionalServiceOnDevice =
                 serviceOnDeviceService.getServiceOnDevice(SERVICE_ON_DEVICE_ID);
         Assertions.assertTrue(optionalServiceOnDevice.isEmpty());
         verify(serviceOnDeviceRepository, times(1)).findById(any());
