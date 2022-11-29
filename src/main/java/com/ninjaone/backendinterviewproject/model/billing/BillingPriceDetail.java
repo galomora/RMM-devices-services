@@ -48,7 +48,8 @@ public class BillingPriceDetail {
         BigDecimal total = BigDecimal.ZERO;
         Map<String, TechService> servicesByName = Billing.mapServicesByName(servicesWithPrice);
         for (ServiceOnDevice service : servicesOnDevice) {
-            total = total.add(servicesByName.get(service.getServiceName()).getPrice());
+            String serviceName = service.getServiceName();
+            total = total.add(servicesByName.get(serviceName).getPrice());
         }
         return total;
     }
