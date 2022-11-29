@@ -23,7 +23,7 @@ Representation of the billing according to the requirement, generated from an or
 #### Create order
 http://localhost:8080/order<br/>
 Headers:<br/>
-* Content-Type : application/json
+* Content-Type : application/json<br/>
 Method: POST<br/>
 Example response:
 ```json
@@ -46,7 +46,7 @@ Example response body:
 #### Create device
 http://localhost:8080/device<br/>
 Headers:<br/>
-* Content-Type : application/json
+* Content-Type : application/json<br/>
 Method: POST<br/>
 Example request body:
 ```json
@@ -114,7 +114,7 @@ Example response body:
 #### Create service
 http://localhost:8080/service<br/>
 Headers:<br/>
-* Content-Type : application/json 
+* Content-Type : application/json <br/>
 Method: POST<br/>
 Example request body:
 ```json
@@ -164,7 +164,7 @@ No content response
 #### Create service for device
 http://localhost:8080/service-for-device<br/>
 Headers:<br/>
-* Content-Type : application/json
+* Content-Type : application/json<br/>
   Method: POST<br/>
   Example request body:
 ```json
@@ -193,7 +193,7 @@ Example response body:
 http://localhost:8080/service-for-device/{id}<br/>
 Method: DELETE<br/>
 Example:<br/>
-http://localhost:8080/service-for-device/3
+http://localhost:8080/service-for-device/3<br/>
 No content response
 ### Billing
 #### Get Billing
@@ -230,9 +230,10 @@ Example response body:
 ## Process Description
 General process for creating a bill:
 * Create devices as required
-* Create services as required, there already exist some services in database
+* Create services as required, there already exist some services in database, as specified. 
+  "Service Device" is considered a service
 * Create an order
-* Assign services for devices in the order. "Service Device" is considered a TechService
+* Assign services for devices in the order. 
 * Generate Billing with order id
 
 # Here starts original document
