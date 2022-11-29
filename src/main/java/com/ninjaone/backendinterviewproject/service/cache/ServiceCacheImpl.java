@@ -47,7 +47,7 @@ public class ServiceCacheImpl implements ServiceCache {
 
     @Override
     public Optional<TechService> getService(String name) {
-        return Optional.of(allServices.get(name));
+        return Optional.ofNullable(allServices.get(name));
     }
 
     @Override

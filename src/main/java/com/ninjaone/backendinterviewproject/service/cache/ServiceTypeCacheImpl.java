@@ -49,7 +49,7 @@ public class ServiceTypeCacheImpl implements ServiceTypeCache {
 
     @Override
     public Optional<TechServiceType> getType(String name) {
-        return Optional.of(allTypes.get(name));
+        return Optional.ofNullable(allTypes.get(name));
     }
 
 

@@ -72,7 +72,7 @@ public class TechServiceServiceTest {
     public void deleteServiceTest () {
         doNothing().when(serviceRepository).deleteById(SERVICE_NAME);
         techServiceService.deleteService(SERVICE_NAME);
-        Mockito.verify(serviceRepository, times(1)).deleteById(SERVICE_NAME);
+        verify(serviceRepository, times(1)).deleteById(SERVICE_NAME);
     }
 
     @Test
