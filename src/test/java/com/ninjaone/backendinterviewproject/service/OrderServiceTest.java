@@ -63,8 +63,8 @@ public class OrderServiceTest {
         );
         when (serviceForDeviceRepository.save(any())).thenReturn(
                 OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService());
-        ServiceForDevice serviceOnDevice = orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName);
-        Assertions.assertFalse(Optional.of(serviceOnDevice).isEmpty());
+        ServiceForDevice serviceForDevice = orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName);
+        Assertions.assertFalse(Optional.of(serviceForDevice).isEmpty());
         Assertions.assertDoesNotThrow(() -> orderService.addServiceOnDeviceToOrder(orderId, deviceId, serviceName));
     }
 

@@ -43,9 +43,9 @@ public class Billing {
 
     public void computeTotal(List<TechService> servicesWithPrice) {
         BigDecimal result = BigDecimal.ZERO;
-        for (ServiceForDevice serviceOnDevice : order.getServicesOnDevice()) {
+        for (ServiceForDevice serviceForDevice : order.getServicesOnDevice()) {
             TechService currentService = mapServicesByName(servicesWithPrice)
-                    .get(serviceOnDevice.getServiceName());
+                    .get(serviceForDevice.getServiceName());
             result = result.add(currentService.getPrice());
         }
         total = BigDecimal.ZERO.add(result);

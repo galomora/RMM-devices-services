@@ -10,11 +10,11 @@ public interface ServiceForDeviceService {
      * @param id
      * @return
      */
-    Optional<ServiceForDevice> getServiceOnDevice (Long id);
+    Optional<ServiceForDevice> getServiceForDevice(Long id);
 
     /**
      * Deletes a {@link ServiceForDevice}
      * @param id
      */
-    void deleteServiceOnDevice (Long id);
+    void deleteServiceForDevice(Long id);
 }

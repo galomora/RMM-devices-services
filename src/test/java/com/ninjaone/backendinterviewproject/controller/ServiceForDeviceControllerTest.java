@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ServiceForDeviceController.class)
 @AutoConfigureMockMvc
 @AutoConfigureDataJpa
-public class ServiceOnDeviceControllerTest {
+public class ServiceForDeviceControllerTest {
     private static final String SERVICE_ID = "Antivirus for Windows";
     private static final String DEVICE_ID = "DEV1";
     private static final Long ORDER_ID = 1L;
@@ -51,12 +51,12 @@ public class ServiceOnDeviceControllerTest {
 
     private Order order;
     private ServiceOnDeviceRequest request;
-    private ServiceForDevice serviceOnDevice;
+    private ServiceForDevice serviceForDevice;
 
     @BeforeEach
     void init () {
         order = OrderTestFactory.getInstance().createOrder();
-        serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinAntivirus();
+        serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinAntivirus();
         request = new ServiceOnDeviceRequest();
         request.setDeviceId(DEVICE_ID);
         request.setServiceName(SERVICE_ID);
@@ -64,19 +64,19 @@ public class ServiceOnDeviceControllerTest {
     }
 
     @Test
-    void getServiceOnDeviceTest() throws Exception {
-        when(serviceForDeviceService.getServiceOnDevice(SERVICE_ON_DEVICE_ID)).thenReturn(Optional.of(serviceOnDevice));
+    void getServiceForDeviceTest() throws Exception {
+        when(serviceForDeviceService.getServiceForDevice(SERVICE_ON_DEVICE_ID)).thenReturn(Optional.of(serviceForDevice));
         mockMvc.perform(get("/service-on-device/" + SERVICE_ON_DEVICE_ID))
                 .andExpect(status().isFound())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string(objectMapper.writeValueAsString(serviceOnDevice)));
+                .andExpect(content().string(objectMapper.writeValueAsString(serviceForDevice)));
     }
 
     @Test
-    public void postServiceOnDeviceTest () throws Exception {
+    public void postServiceForDeviceTest() throws Exception {
         when(orderService.addServiceOnDeviceToOrder(request.getOrderId(),
-                request.getDeviceId(), request.getServiceName())).thenReturn(serviceOnDevice);
-        String serviceEntityString = objectMapper.writeValueAsString(serviceOnDevice);
+                request.getDeviceId(), request.getServiceName())).thenReturn(serviceForDevice);
+        String serviceEntityString = objectMapper.writeValueAsString(serviceForDevice);
         String requestString = objectMapper.writeValueAsString(request);
         mockMvc.perform(post("/service-on-device")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -88,9 +88,9 @@ public class ServiceOnDeviceControllerTest {
     @Test
     public void postServiceNotValidRequestTest () throws Exception {
         when(orderService.addServiceOnDeviceToOrder(request.getOrderId(),
-                request.getDeviceId(), request.getServiceName())).thenReturn(serviceOnDevice);
+                request.getDeviceId(), request.getServiceName())).thenReturn(serviceForDevice);
         request.setOrderId(-1L);
-        String serviceEntityString = objectMapper.writeValueAsString(serviceOnDevice);
+        String serviceEntityString = objectMapper.writeValueAsString(serviceForDevice);
         String requestString = objectMapper.writeValueAsString(request);
         mockMvc.perform(post("/service-on-device")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -100,7 +100,7 @@ public class ServiceOnDeviceControllerTest {
 
     @Test
     void deleteServiceTest() throws Exception {
-        doNothing().when(serviceForDeviceService).deleteServiceOnDevice(SERVICE_ON_DEVICE_ID);
+        doNothing().when(serviceForDeviceService).deleteServiceForDevice(SERVICE_ON_DEVICE_ID);
         mockMvc.perform(delete("/service-on-device/" + SERVICE_ON_DEVICE_ID))
                 .andExpect(status().isNoContent());
     }

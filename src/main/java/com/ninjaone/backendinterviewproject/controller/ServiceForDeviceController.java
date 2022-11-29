@@ -44,14 +44,14 @@ public class ServiceForDeviceController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.FOUND)
     public ServiceForDevice getService (@PathVariable Long id) {
-        return this.serviceForDeviceService.getServiceOnDevice(id).orElseThrow();
+        return this.serviceForDeviceService.getServiceForDevice(id).orElseThrow();
     }
 
     @RequestMapping (path="/{id}",
             method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteService (@PathVariable Long id) {
-        this.serviceForDeviceService.deleteServiceOnDevice(id);
+        this.serviceForDeviceService.deleteServiceForDevice(id);
     }
 
 }

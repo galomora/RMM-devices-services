@@ -35,8 +35,8 @@ public class OrderServiceImpl implements OrderService {
         Order order = optionalOrder.orElseThrow(() -> new OrderNotFoundException("Not found order with id " + orderId));
         TechService service = this.serviceCache.getService(serviceName).orElseThrow();
         Device device = this.deviceRepository.findById(deviceId).orElseThrow();
-        ServiceForDevice serviceOnDeviceToSave = new ServiceForDevice(service, device, order );
-        return serviceForDeviceRepository.save(serviceOnDeviceToSave);
+        ServiceForDevice serviceForDeviceToSave = new ServiceForDevice(service, device, order );
+        return serviceForDeviceRepository.save(serviceForDeviceToSave);
     }
 
     @Override

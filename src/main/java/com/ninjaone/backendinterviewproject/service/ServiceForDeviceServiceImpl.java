@@ -14,12 +14,12 @@ public class ServiceForDeviceServiceImpl implements ServiceForDeviceService {
     private ServiceForDeviceRepository serviceForDeviceRepository;
 
     @Override
-    public Optional<ServiceForDevice> getServiceOnDevice(Long id) {
+    public Optional<ServiceForDevice> getServiceForDevice(Long id) {
         return serviceForDeviceRepository.findById(id);
     }
 
     @Override
-    public void deleteServiceOnDevice(Long id) {
+    public void deleteServiceForDevice(Long id) {
         this.serviceForDeviceRepository.deleteById(id);
     }
 }

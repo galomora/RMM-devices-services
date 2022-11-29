@@ -18,8 +18,8 @@ public class OrderTest {
     @Test
     public void testAddServiceOnDeviceToOrder () {
         Order order = OrderTestFactory.getInstance().createOrder();
-        ServiceForDevice serviceOnDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
-        order.addServiceOnDevice(serviceOnDevice);
+        ServiceForDevice serviceForDevice = OrderTestFactory.getInstance().createServiceOfDeviceWinDeviceService();
+        order.addServiceOnDevice(serviceForDevice);
         Assertions.assertFalse(order.getServicesOnDevice().isEmpty());
         ServiceForDevice firstService = order.getServicesOnDevice().stream().findFirst().get();
         TechService service = OrderTestFactory.getInstance().createServiceOfTypeDeviceService();
