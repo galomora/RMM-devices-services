@@ -189,7 +189,53 @@ Example response body:
   "orderId": 1
 }
 ```
+#### Delete service for device
+http://localhost:8080/service-for-device/{id}<br/>
+Method: DELETE<br/>
+Example:<br/>
+http://localhost:8080/service-for-device/3
+No content response
+### Billing
+#### Get Billing
+http://localhost:8080/billing/{orderId}<br/>
+Method: GET<br/>
+Example:<br/>
+http://localhost:8080/billing/1<br/>
+Example response body:
+```json
+{
+  "serviceDetails": [
+    {
+      "operatingSystem": "MAC",
+      "serviceQuantity": {
+        "TechServiceType{name='SERVICE_DEVICE', description='Service Device'}": 2,
+        "TechServiceType{name='ANTIVIRUS', description='Antivirus'}": 1
+      }
+    }
+  ],
+  "priceDetails": [
+    {
+      "price": 8.00,
+      "typeName": "SERVICE_DEVICE"
+    },
+    {
+      "price": 5.0,
+      "typeName": "ANTIVIRUS"
+    }
+  ],
+  "total": 13.00
+}
+```
 
+## Process Description
+General process for creating a bill:
+* Create devices as required
+* Create services as required, there already exist some services in database
+* Create an order
+* Assign services for devices in the order. "Service Device" is considered a TechService
+* Generate Billing with order id
+
+# Here starts original document
 
 # NinjaOne Backend Interview Project
 
